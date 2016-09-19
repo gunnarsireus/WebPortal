@@ -1,0 +1,31 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIAccount_F
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputForm("forgot-account-form", SiteInputPanels.NONE, SiteInputPanels.NONE))
+{
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteStringEditor("E-post", LABELCOLS, "email", SiteTextInputs.StringType.TEXT, Account.MINLEN_EMAIL, Account.MAXLEN_EMAIL, SiteTextInputs.GlyphIcon.EMAIL)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteLink("go-back-link", "Tillbaka", "site-half-row-spacing", Enums.LinkPosition.Left)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteButton("sendpin-button", "Skicka", Enums.ButtonPosition.Right, Enums.ButtonStyle.Info, Enums.ButtonSize.Normal)
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteErrorField("custom-message", Enums.MessageFieldStyle.Warning)
+        </div>
+    </div>
+}

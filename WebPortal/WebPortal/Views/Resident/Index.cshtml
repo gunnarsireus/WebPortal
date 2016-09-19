@@ -1,0 +1,73 @@
+﻿@using WebPortal.Helpers
+
+@{
+    ViewBag.Title = "Renew | Boende";
+    Layout        = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/site-resident/js")
+}
+
+<!-- Page layout -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 site-page-control">
+            <h3 class="site-page-header">Boende</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Kund</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteSelect("customerid-select", SiteSelectInputs.SelectType.NONEABLE, null, false)
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Aktiv</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteSelectYesNo("active-select", false)
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Nytt konto</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteButton("create-resident-button", "Skapa", Enums.ButtonPosition.Left, Enums.ButtonStyle.Default, Enums.ButtonSize.Normal)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 site-page-content">
+            <div class="row" id="create-resident-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("ResidentCreate")
+                </div>
+            </div>
+            <div class="row" id="update-resident-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("ResidentUpdate")
+                </div>
+            </div>
+            <div class="row" id="change-password-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("ResidentSecure")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("ResidentTable")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

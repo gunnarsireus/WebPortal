@@ -1,0 +1,19 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIProfile_RU
+
+@{ var LABELCOLS = 3; }
+
+@using (Html.SiteInputPanel("update-profile-form", "Uppdatera kontoinformation", SiteInputPanels.NONE, SiteInputPanels.APPLY))
+{
+    @Html.ValidationSummary(true)
+    @Html.SiteStringEditor("Förnamn",   LABELCOLS, "firstname", SiteTextInputs.StringType.TEXT,  Account.MINLEN_FIRSTNAME, Account.MAXLEN_FIRSTNAME, SiteTextInputs.GlyphIcon.USER)
+    @Html.SiteStringEditor("Efternamn", LABELCOLS, "lastname",  SiteTextInputs.StringType.TEXT,  Account.MINLEN_LASTNAME,  Account.MAXLEN_LASTNAME,  SiteTextInputs.GlyphIcon.USER)
+    @Html.SiteStringEditor("Telefon",   LABELCOLS, "phone",     SiteTextInputs.StringType.PHONE, Account.MINLEN_PHONE,     Account.MAXLEN_PHONE,     SiteTextInputs.GlyphIcon.PHONE)
+    if (ViewBag.IsAtMostCustomer)
+    {
+        @Html.SiteStringEditor("Adress",      LABELCOLS, "address",   SiteTextInputs.StringType.TEXT,  Account.MINLEN_ADDRESS,   Account.MAXLEN_ADDRESS,   SiteTextInputs.GlyphIcon.LOCATION)
+        @Html.SiteStringEditor("Våningsplan", LABELCOLS, "floor",     SiteTextInputs.StringType.TEXT,  Account.MINLEN_FLOOR,     Account.MAXLEN_FLOOR,     SiteTextInputs.GlyphIcon.FLOOR)
+        @Html.SiteStringEditor("Lägenhet",    LABELCOLS, "apartment", SiteTextInputs.StringType.TEXT,  Account.MINLEN_APARTMENT, Account.MAXLEN_APARTMENT, SiteTextInputs.GlyphIcon.APARTMENT)
+    }
+}

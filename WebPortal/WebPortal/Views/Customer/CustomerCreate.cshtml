@@ -1,0 +1,33 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UICustomer_CRU
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputPanel("create-customer-form", "Skapa kund", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.CREATE))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteSelectCustomerType("Kundtyp",    LABELCOLS, "type",         SiteSelectInputs.SelectType.MANDATORY)
+            @Html.SiteSelect(            "Kundansv.",  LABELCOLS, "managementid", SiteSelectInputs.SelectType.NONEABLE, null, SiteSelectInputs.GlyphIcon.USER)
+            @Html.SiteSelect(            "Tekniker",   LABELCOLS, "technicianid", SiteSelectInputs.SelectType.NONEABLE, null, SiteSelectInputs.GlyphIcon.USER)
+            @Html.SiteStringEditor(      "Namn",       LABELCOLS, "name",         SiteTextInputs.StringType.TEXT,      Customer.MINLEN_NAME,      Customer.MAXLEN_NAME,      SiteTextInputs.GlyphIcon.TITLE)
+            @Html.SiteStringEditor(      "Adress",     LABELCOLS, "address",      SiteTextInputs.StringType.TEXT,      Customer.MINLEN_ADDRESS,   Customer.MAXLEN_ADDRESS,   SiteTextInputs.GlyphIcon.LOCATION)
+            @Html.SiteStringEditor(      "Postnr.",    LABELCOLS, "zip",          SiteTextInputs.StringType.NUMBER,    Customer.MINLEN_ZIP,       Customer.MAXLEN_ZIP,       SiteTextInputs.GlyphIcon.LOCATION)
+            @Html.SiteStringEditor(      "Ort",        LABELCOLS, "city",         SiteTextInputs.StringType.TEXT,      Customer.MINLEN_CITY,      Customer.MAXLEN_CITY,      SiteTextInputs.GlyphIcon.LOCATION)
+            @Html.SiteStringEditor(      "Org.nummer", LABELCOLS, "orgnumber",    SiteTextInputs.StringType.ORGNUMBER, Customer.MINLEN_ORGNUMBER, Customer.MAXLEN_ORGNUMBER, SiteTextInputs.GlyphIcon.COMPANY)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteStringEditor(      "Kontakt",    LABELCOLS, "contact",      SiteTextInputs.StringType.TEXT,      Customer.MINLEN_CONTACT,   Customer.MAXLEN_CONTACT,   SiteTextInputs.GlyphIcon.USER)
+            @Html.SiteStringEditor(      "Telefon",    LABELCOLS, "phone",        SiteTextInputs.StringType.PHONE,     Customer.MINLEN_PHONE,     Customer.MAXLEN_PHONE,     SiteTextInputs.GlyphIcon.PHONE)
+            @Html.SiteStringEditor(      "E-post",     LABELCOLS, "email",        SiteTextInputs.StringType.TEXT,      Customer.MINLEN_EMAIL,     Customer.MAXLEN_EMAIL,     SiteTextInputs.GlyphIcon.EMAIL)
+            @Html.SiteStringEditor(      "Vismakod",   LABELCOLS, "vismaref",     SiteTextInputs.StringType.TEXT,      Customer.MINLEN_VISMAREF,  Customer.MAXLEN_VISMAREF,  SiteTextInputs.GlyphIcon.REFERENCE)
+            @Html.SiteSelectYesNo(       "Aktiv",      LABELCOLS, "active")
+            @Html.SiteMultilineEditor(   "Notering",   LABELCOLS, "note",                                              Customer.MINLEN_NOTE,      Customer.MAXLEN_NOTE,      6)
+        </div>
+    </div>
+}

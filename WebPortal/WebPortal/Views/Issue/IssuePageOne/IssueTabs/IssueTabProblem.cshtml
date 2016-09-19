@@ -1,0 +1,34 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIIssueProblem_U
+
+@{
+    int LABELCOLS = 3;
+}
+
+<div class="row" id="issue-tabproblem-page" hidden>
+    <div class="col-md-10 col-md-offset-1">
+    @using (Html.SiteInputForm("issue-tabproblem-form", SiteInputForms.RELOAD, SiteInputForms.APPLY))
+    {
+        @Html.ValidationSummary(true)
+        @Html.SiteStringHidden("issueid", SiteTextInputs.NOVALUE)
+        <div class="row">
+            <div class="col-md-6">
+                @Html.SiteStringEditor(              "Titel",       LABELCOLS, "name",            SiteTextInputs.StringType.TEXT, Issue.MINLEN_NAME, Issue.MAXLEN_NAME, SiteTextInputs.GlyphIcon.TITLE)
+                @Html.SiteSelectAccountAuthzEmployee("Tilldelad",   LABELCOLS, "assignedid",      SiteSelectInputs.SelectType.MANDATORY)
+                @Html.SiteDateTimeInput(             "Startdatum",  LABELCOLS, "startdatestring", "starttimestring", SiteDateTimeInputs.CalendarType.FREE)
+                @Html.SiteDateTimeInput(             "Slutdatum",   LABELCOLS, "enddatestring",   "endtimestring",   SiteDateTimeInputs.CalendarType.FREE)
+                @Html.SiteSelect(                    "Ärendeklass", LABELCOLS, "issueclassid",    SiteSelectInputs.SelectType.NONEABLE, null, SiteSelectInputs.GlyphIcon.CATEGORY)
+                @Html.SiteSelectIssuePrio(           "Prioritet",   LABELCOLS, "prio",            SiteSelectInputs.SelectType.NONEABLE)
+                @Html.SiteSelectIssueResponsible(    "Utförare",    LABELCOLS, "responsible",     SiteSelectInputs.SelectType.NONEABLE)
+            </div>
+            <div class="col-md-6">
+                @Html.SiteStringDisplay(             "Kund",        LABELCOLS, "customername",    SiteTextInputs.StringType.TEXT, SiteTextInputs.GlyphIcon.COMPANY)
+                @Html.SiteSelectIssueAreaType(       "Utrymme",     LABELCOLS, "areatype",        SiteSelectInputs.SelectType.NONEABLE)
+                @Html.SiteMultilineEditor(           "Beskrivning", LABELCOLS, "description",     Issue.MINLEN_DESCRIPTION, Issue.MAXLEN_DESCRIPTION, 11)
+            </div>
+        </div>
+        <br />
+    }
+    </div>
+</div>

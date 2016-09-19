@@ -1,0 +1,27 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UINews_CRU
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputPanel("update-news-form", "Uppdatera nyhet", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.APPLY))
+{
+    @Html.ValidationSummary(true)
+    @Html.SiteStringHidden("id", SiteTextInputs.NOVALUE)
+    @Html.SiteStringHidden("customerid", SiteTextInputs.NOVALUE)
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteSelectNewsCategory("Kategori",   LABELCOLS, "category", SiteSelectInputs.SelectType.MANDATORY)
+            @Html.SiteStringEditor(      "Rubrik",     LABELCOLS, "headline", SiteTextInputs.StringType.TEXT, News.MINLEN_HEADLINE, News.MAXLEN_HEADLINE, SiteTextInputs.GlyphIcon.TITLE)
+            @Html.SiteDateTimeInput(     "Visas",      LABELCOLS, "showfromdate",  "showfromtime",  SiteDateTimeInputs.CalendarType.FREE)
+            @Html.SiteDateTimeInput(     "Släcks",     LABELCOLS, "showuntildate", "showuntiltime", SiteDateTimeInputs.CalendarType.FUTURE)
+            @Html.SiteStringDisplay(     "Från",       LABELCOLS, "author",   SiteTextInputs.StringType.TEXT, SiteTextInputs.GlyphIcon.USER)
+            @Html.SiteStringDisplay(     "Skickat",    LABELCOLS, "sent",     SiteTextInputs.StringType.TEXT, SiteTextInputs.GlyphIcon.CALENDAR)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteMultilineEditor(   "Meddelande", LABELCOLS, "message", News.MINLEN_MESSAGE, News.MAXLEN_MESSAGE, 13)
+        </div>
+    </div>
+}

@@ -1,0 +1,10 @@
+# SharpDevelop and C# stuff
+bin/
+obj/
+*.suo
+*.user
+log.txt
+
+# Visual Studio 2015 cache/options directory
+.vs/
+

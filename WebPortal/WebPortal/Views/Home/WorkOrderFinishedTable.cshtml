@@ -1,0 +1,21 @@
+﻿@using WebPortal.UIModel
+@model WebPortal.UIModel.UIHomeWorkOrderList
+
+<table class="table table-striped table-hover">
+    <tbody>
+        @{
+            var count = ViewBag.FinishedWorkOrders.Count;
+        }
+        @for (var i = 0; i < UIHome.NUM_DASHBOARD_ROWS; i++)
+        {
+            var t1 = (count > i) ? ViewBag.FinishedWorkOrders[i].header : @Html.Raw("&nbsp;");
+            var t2 = (count > i) ? ViewBag.FinishedWorkOrders[i].location : @Html.Raw("&nbsp;");
+            var t3 = (count > i) ? @Html.Raw(ViewBag.FinishedWorkOrders[i].quicklink) : @Html.Raw("&nbsp;");
+            <tr>
+                <td width="59%">@t1</td>
+                <td width="36%">@t2</td>
+                <td width="5%">@t3</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,6 @@
+# Visual Studio stuff
+bin/
+obj/
+*.suo
+*.user
+log.txt

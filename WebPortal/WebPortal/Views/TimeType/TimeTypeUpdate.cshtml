@@ -1,0 +1,24 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UITimeType_RU
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputPanel("update-timetype-form", "Uppdatera tidkod", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.APPLY))
+{
+    @Html.ValidationSummary(true)
+    @Html.SiteStringHidden("id", SiteTextInputs.NOVALUE)
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteStringDisplay(    "Vismakod",   LABELCOLS, "code", SiteTextInputs.StringType.TEXT, SiteTextInputs.GlyphIcon.LABEL)
+            @Html.SiteStringDisplay(    "Namn",       LABELCOLS, "name", SiteTextInputs.StringType.TEXT, SiteTextInputs.GlyphIcon.TITLE)
+            @Html.SiteStringDisplay(    "Enhet",      LABELCOLS, "unit", SiteTextInputs.StringType.TEXT, SiteTextInputs.GlyphIcon.REFERENCE)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteSelectYesNo(     "Aktiv",       LABELCOLS, "active")
+            @Html.SiteMultilineDisplay("Beskrivning", LABELCOLS, "description", 3)
+        </div>
+    </div>
+}

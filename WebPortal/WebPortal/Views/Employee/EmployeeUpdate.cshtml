@@ -1,0 +1,25 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIEmployee_CRU
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputPanel("update-employee-form", "Uppdatera konto", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.APPLY))
+{
+    @Html.ValidationSummary(true)
+    @Html.SiteStringHidden("id", SiteTextInputs.NOVALUE)
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteSelectAccountAuthzEmployee("Behörighet", LABELCOLS, "authz",     SiteSelectInputs.SelectType.MANDATORY)
+            @Html.SiteStringEditor(              "E-post",     LABELCOLS, "email",     SiteTextInputs.StringType.TEXT,  Account.MINLEN_EMAIL,     Account.MAXLEN_EMAIL,     SiteTextInputs.GlyphIcon.EMAIL)
+            @Html.SiteStringEditor(              "Telefon",    LABELCOLS, "phone",     SiteTextInputs.StringType.PHONE, Account.MINLEN_PHONE,     Account.MAXLEN_PHONE,     SiteTextInputs.GlyphIcon.PHONE)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteStringEditor(              "Förnamn",    LABELCOLS, "firstname", SiteTextInputs.StringType.TEXT,  Account.MINLEN_FIRSTNAME, Account.MAXLEN_FIRSTNAME, SiteTextInputs.GlyphIcon.USER)
+            @Html.SiteStringEditor(              "Efternamn",  LABELCOLS, "lastname",  SiteTextInputs.StringType.TEXT,  Account.MINLEN_LASTNAME,  Account.MAXLEN_LASTNAME,  SiteTextInputs.GlyphIcon.USER)
+            @Html.SiteSelectYesNo(               "Aktiv",      LABELCOLS, "active")
+        </div>
+    </div>
+}

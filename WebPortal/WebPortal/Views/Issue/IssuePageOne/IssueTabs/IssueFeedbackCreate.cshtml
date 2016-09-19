@@ -1,0 +1,25 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIIssueFeedback_C
+
+@{
+    int LABELCOLS = 3;
+}
+
+<div class="row" id="create-issuefeedback-panel" hidden>
+    <div class="col-md-12">
+    @using (Html.SiteInputPanel("create-issuefeedback-form", "Skapa kommentar", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.CREATE))
+    {
+        @Html.ValidationSummary(true)
+        @Html.SiteStringHidden("issueid", SiteTextInputs.NOVALUE)
+        <div class="row">
+            <div class="col-md-5">
+                @Html.SiteSelectIssueFeedbackAccessType("Synlighet", LABELCOLS, "accesstype", SiteSelectInputs.SelectType.MANDATORY)
+            </div>
+            <div class="col-md-7">
+                @Html.SiteMultilineEditor("Kommentar", LABELCOLS, "description", IssueFeedback.MINLEN_DESCRIPTION, IssueFeedback.MAXLEN_DESCRIPTION, 3)
+            </div>
+        </div>
+    }
+    </div>
+</div>

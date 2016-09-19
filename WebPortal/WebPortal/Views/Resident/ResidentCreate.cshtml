@@ -1,0 +1,29 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIResident_CRU
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputPanel("create-resident-form", "Skapa konto", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.CREATE))
+{
+    @Html.ValidationSummary(true)
+    @Html.SiteStringHidden("customerid", SiteTextInputs.NOVALUE)
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteSelectAccountAuthzResident("Behörighet", LABELCOLS, "authz",     SiteSelectInputs.SelectType.MANDATORY)
+            @Html.SiteStringEditor(              "E-post",     LABELCOLS, "email",     SiteTextInputs.StringType.TEXT,        Account.MINLEN_EMAIL,     Account.MAXLEN_EMAIL,     SiteTextInputs.GlyphIcon.EMAIL)
+            @Html.SiteStringEditor(              "Lösenord",   LABELCOLS, "password",  SiteTextInputs.StringType.PW_VALIDATE, Account.MINLEN_PASSWORD,  Account.MAXLEN_PASSWORD,  SiteTextInputs.GlyphIcon.PASSWORD)
+            @Html.SiteStringEditor(              "Förnamn",    LABELCOLS, "firstname", SiteTextInputs.StringType.TEXT,        Account.MINLEN_FIRSTNAME, Account.MAXLEN_FIRSTNAME, SiteTextInputs.GlyphIcon.USER)
+            @Html.SiteStringEditor(              "Efternamn",  LABELCOLS, "lastname",  SiteTextInputs.StringType.TEXT,        Account.MINLEN_LASTNAME,  Account.MAXLEN_LASTNAME,  SiteTextInputs.GlyphIcon.USER)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteStringEditor(              "Telefon",    LABELCOLS, "phone",     SiteTextInputs.StringType.PHONE,       Account.MINLEN_PHONE,     Account.MAXLEN_PHONE,     SiteTextInputs.GlyphIcon.PHONE)
+            @Html.SiteStringEditor(              "Adress",     LABELCOLS, "address",   SiteTextInputs.StringType.TEXT,        Account.MINLEN_ADDRESS,   Account.MAXLEN_ADDRESS,   SiteTextInputs.GlyphIcon.LOCATION)
+            @Html.SiteStringEditor(              "Våning",     LABELCOLS, "floor",     SiteTextInputs.StringType.TEXT,        Account.MINLEN_FLOOR,     Account.MAXLEN_FLOOR,     SiteTextInputs.GlyphIcon.FLOOR)
+            @Html.SiteStringEditor(              "Lägenhet",   LABELCOLS, "apartment", SiteTextInputs.StringType.TEXT,        Account.MINLEN_APARTMENT, Account.MAXLEN_APARTMENT, SiteTextInputs.GlyphIcon.APARTMENT)
+            @Html.SiteSelectYesNo(               "Aktiv",      LABELCOLS, "active")
+        </div>
+    </div>
+}

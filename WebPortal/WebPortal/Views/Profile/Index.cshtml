@@ -1,0 +1,68 @@
+﻿@using WebPortal.Helpers
+
+@{
+    ViewBag.Title = "Renew | Profil";
+    Layout        = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/site-profile/js")
+}
+
+<!-- Page layout -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 site-page-control">
+            <h3 class="site-page-header">Profil</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Användare</h4>
+                    @ViewBag.UserName
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Förening</h4>
+                    @ViewBag.CustomerName
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Behörighet</h4>
+                    @ViewBag.Authorization
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Inloggad sedan</h4>
+                    @ViewBag.LastLoginTime
+                </div>
+            </div>
+            @if (ViewBag.IsCustomer || ViewBag.IsResident)
+            {
+                <div class="row site-row-spacing">
+                    <div class="col-md-12">
+                        <h4>Avsluta konto</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.SiteButton("delete-profile-button", "Ta bort", Enums.ButtonPosition.Left, Enums.ButtonStyle.Danger, Enums.ButtonSize.Normal)
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-10 site-page-content">
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.Partial("ProfileUpdate")
+                </div>
+                <div class="col-md-6">
+                    @Html.Partial("ProfileSecure")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

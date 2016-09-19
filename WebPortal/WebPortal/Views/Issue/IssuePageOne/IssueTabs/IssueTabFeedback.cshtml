@@ -1,0 +1,32 @@
+﻿@using WebPortal.Helpers
+
+<div class="row" id="issue-tabfeedback-page" hidden>
+    <div class="col-md-10 col-md-offset-1">
+        @Html.Partial("IssuePageOne/IssueTabs/IssueFeedbackCreate")
+        @using (Html.SiteInputForm("issue-tabfeedback-form", SiteInputForms.RELOAD, SiteInputForms.CREATE))
+        {
+            <table id="issue-tabfeedback-table" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th><!-- accessicon --></th>
+                        <th>Kommentar</th>
+                        <th>Från</th>
+                        <th>Datum</th>
+                        <th>Tid</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                    <tr>
+                        <th><!-- accessicon --></th>
+                        <th>Kommentar</th>
+                        <th>Från</th>
+                        <th>Datum</th>
+                        <th>Tid</th>
+                    </tr>
+                </tfoot>
+            </table>
+            <br />
+        }
+    </div>
+</div>

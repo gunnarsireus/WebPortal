@@ -1,0 +1,34 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIAccount_S
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputForm("secure-account-form", SiteInputPanels.NONE, SiteInputPanels.NONE))
+{
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteStringDisplay("E-post",   LABELCOLS, "email",     SiteTextInputs.StringType.TEXT, SiteTextInputs.GlyphIcon.EMAIL)
+            @Html.SiteStringEditor( "PIN-kod",  LABELCOLS, "PIN",       SiteTextInputs.StringType.NUMBER,      Account.MINLEN_PIN,      Account.MAXLEN_PIN,      SiteTextInputs.GlyphIcon.PASSWORD)
+            @Html.SiteStringEditor( "Lösenord", LABELCOLS, "password1", SiteTextInputs.StringType.PW_VALIDATE, Account.MINLEN_PASSWORD, Account.MAXLEN_PASSWORD, SiteTextInputs.GlyphIcon.PASSWORD)
+            @Html.SiteStringEditor( "Bekräfta", LABELCOLS, "password2", SiteTextInputs.StringType.PW_VALIDATE, Account.MINLEN_PASSWORD, Account.MAXLEN_PASSWORD, SiteTextInputs.GlyphIcon.PASSWORD)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteButton("resend-pin-button", "Ny PIN-kod", Enums.ButtonPosition.Left, Enums.ButtonStyle.Default, Enums.ButtonSize.Normal)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteButton("set-password-button", "Sätt lösenord", Enums.ButtonPosition.Right, Enums.ButtonStyle.Info, Enums.ButtonSize.Normal)
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteErrorField("custom-message", Enums.MessageFieldStyle.Warning)
+        </div>
+    </div>
+}

@@ -1,0 +1,15 @@
+﻿@using WebPortal.Utils
+
+<div class="row" id="page-issue-one" hidden>
+    <div class="col-md-2 site-page-control">
+        <h3 class="site-page-header">Ärende <span id="issue-page-one-number"></span> @Html.Raw(Images.HELP("page-description-tooltip"))</h3>
+        @Html.Partial("IssuePageOne/IssueCommand")
+    </div>
+    <div class="col-md-10 site-page-content">
+        @Html.Partial("IssuePageOne/IssueTabs")
+        <br />
+        @Html.Partial("IssuePageOne/IssueTabs/IssueTabProblem")
+        @Html.Partial("IssuePageOne/IssueTabs/IssueTabFeedback")
+        @Html.Partial("IssuePageOne/IssueTabs/IssueTabHistory")
+    </div>
+</div>

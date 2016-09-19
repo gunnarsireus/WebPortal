@@ -1,0 +1,33 @@
+﻿@using WebPortal.Helpers
+
+<div class="row" id="issue-tabhistory-page" hidden>
+    <div class="col-md-10 col-md-offset-1">
+        @using (Html.SiteInputForm("issue-tabhistory-form", SiteInputForms.RELOAD, SiteInputForms.NONE))
+        {
+            <table id="issue-tabhistory-table" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Från status</th>
+                        <th>Till status</th>
+                        <th></th>
+                        <th>Ändrad av</th>
+                        <th>Datum</th>
+                        <th>Klockslag</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                    <tr>
+                        <th>Från status</th>
+                        <th>Till status</th>
+                        <th></th>
+                        <th>Ändrad av</th>
+                        <th>Datum</th>
+                        <th>Klockslag</th>
+                    </tr>
+                </tfoot>
+            </table>
+            <br />
+        }
+    </div>
+</div>

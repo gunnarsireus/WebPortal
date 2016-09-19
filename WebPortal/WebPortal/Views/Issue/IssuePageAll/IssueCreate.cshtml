@@ -1,0 +1,40 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIIssue_C
+
+@{
+    int LABELCOLS = 3;
+}
+
+<div class="row" id="create-issue-panel" hidden>
+    <div class="col-md-12">
+    @using (Html.SiteInputPanel("create-issue-form", "Skapa ärende", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.CREATE))
+    {
+        @Html.ValidationSummary(true)
+        @Html.SiteStringHidden("customerid", SiteTextInputs.NOVALUE, false)
+        <div class="row">
+            <div class="col-md-6">
+                @Html.SiteStringEditor(              "Titel",       LABELCOLS, "name",            SiteTextInputs.StringType.TEXT, Issue.MINLEN_NAME, Issue.MAXLEN_NAME, SiteTextInputs.GlyphIcon.TITLE)
+                @Html.SiteSelectAccountAuthzEmployee("Tilldelad",   LABELCOLS, "assignedid",      SiteSelectInputs.SelectType.MANDATORY)
+                @Html.SiteDateTimeInput(             "Startdatum",  LABELCOLS, "startdatestring", "starttimestring", SiteDateTimeInputs.CalendarType.FREE)
+                @Html.SiteDateTimeInput(             "Slutdatum",   LABELCOLS, "enddatestring",   "endtimestring",   SiteDateTimeInputs.CalendarType.FREE)
+                @Html.SiteSelect(                    "Ärendeklass", LABELCOLS, "issueclassid",    SiteSelectInputs.SelectType.NONEABLE, null, SiteSelectInputs.GlyphIcon.CATEGORY)
+                @Html.SiteSelectIssuePrio(           "Prioritet",   LABELCOLS, "prio",            SiteSelectInputs.SelectType.NONEABLE)
+                @Html.SiteSelectIssueResponsible(    "Utförare",    LABELCOLS, "responsible",     SiteSelectInputs.SelectType.NONEABLE)
+                @Html.SiteMultilineEditor(           "Beskrivning", LABELCOLS, "description",     Issue.MINLEN_DESCRIPTION, Issue.MAXLEN_DESCRIPTION, 4)
+            </div>
+            <div class="col-md-6">
+                @Html.SiteSelectIssueAreaType(       "Utrymme",     LABELCOLS, "areatype",   SiteSelectInputs.SelectType.NONEABLE)
+                @Html.SiteSelect2(                   "Boende",      LABELCOLS, "residentid", null)
+                @Html.SiteStringEditor(              "Förnamn",     LABELCOLS, "firstname",  SiteTextInputs.StringType.TEXT,  Issue.MINLEN_FIRSTNAME, Issue.MAXLEN_FIRSTNAME, SiteTextInputs.GlyphIcon.USER)
+                @Html.SiteStringEditor(              "Efternamn",   LABELCOLS, "lastname",   SiteTextInputs.StringType.TEXT,  Issue.MINLEN_LASTNAME,  Issue.MAXLEN_LASTNAME,  SiteTextInputs.GlyphIcon.USER)
+                @Html.SiteStringEditor(              "Telefon",     LABELCOLS, "phone",      SiteTextInputs.StringType.PHONE, Issue.MINLEN_PHONE,     Issue.MAXLEN_PHONE,     SiteTextInputs.GlyphIcon.PHONE)
+                @Html.SiteStringEditor(              "E-post",      LABELCOLS, "email",      SiteTextInputs.StringType.TEXT,  Issue.MINLEN_EMAIL,     Issue.MAXLEN_EMAIL,     SiteTextInputs.GlyphIcon.EMAIL)
+                @Html.SiteStringEditor(              "Adress",      LABELCOLS, "address",    SiteTextInputs.StringType.TEXT,  Issue.MINLEN_ADDRESS,   Issue.MAXLEN_ADDRESS,   SiteTextInputs.GlyphIcon.LOCATION)
+                @Html.SiteStringEditor(              "Våningsplan", LABELCOLS, "floor",      SiteTextInputs.StringType.TEXT,  Issue.MINLEN_FLOOR,     Issue.MAXLEN_FLOOR,     SiteTextInputs.GlyphIcon.FLOOR)
+                @Html.SiteStringEditor(              "Lägenhet",    LABELCOLS, "apartment",  SiteTextInputs.StringType.TEXT,  Issue.MINLEN_APARTMENT, Issue.MAXLEN_APARTMENT, SiteTextInputs.GlyphIcon.APARTMENT)
+            </div>
+        </div>
+    }
+    </div>
+</div>

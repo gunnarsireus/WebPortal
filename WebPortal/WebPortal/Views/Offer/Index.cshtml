@@ -1,0 +1,58 @@
+﻿@using WebPortal.Helpers
+
+@{
+    ViewBag.Title = "Renew | Erbjudanden";
+    Layout        = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/site-offer/js")
+}
+
+<!-- Page layout -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 site-page-control">
+            <h3 class="site-page-header">Erbjudanden</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Kund</h4>
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    @Html.SiteSelect("customerid-select", SiteSelectInputs.SelectType.NONEABLE, null, false)
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Erbjudande</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteButton("create-offer-button", "Skapa", Enums.ButtonPosition.Left, Enums.ButtonStyle.Default, Enums.ButtonSize.Normal)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 site-page-content">
+            <div class="row" id="create-offer-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("OfferCreate")
+                </div>
+            </div>
+            <div class="row" id="update-offer-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("OfferUpdate")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("OfferTable")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

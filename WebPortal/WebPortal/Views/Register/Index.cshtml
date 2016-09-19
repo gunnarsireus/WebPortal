@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Renew | Registrering";
+    Layout        = "~/Views/Shared/_Login.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/site-components/js")
+    @Scripts.Render("~/site-register/js")
+}
+
+<div class="container">
+    <div class="row" id="create-account-panel" hidden>
+        <div class="col-xs-offset-2 col-xs-8 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4 site-form-border">
+            <fieldset>
+                <center>
+                    <h3>Registrering</h3>
+                    <i><small>PIN-kod för verifiering skickas till e-postadressen</small></i>
+                </center>
+                <br />
+                @Html.Partial("AccountCreate")
+            </fieldset>
+        </div>
+    </div>
+    <div class="row" id="secure-account-panel" hidden>
+        <div class="col-xs-offset-2 col-xs-8 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4 site-form-border">
+            <fieldset>
+                <center>
+                    <h3>Sätt lösenord</h3>
+                    <i><small>PIN-kod har skickats till e-postadressen</small></i>
+                </center>
+                <br />
+                @Html.Partial("../Account/AccountSecure")
+            </fieldset>
+        </div>
+    </div>
+</div>

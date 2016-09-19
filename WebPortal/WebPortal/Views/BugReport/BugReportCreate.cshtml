@@ -1,0 +1,20 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIBugReport_C
+
+@{ int LABELCOLS = 2; }
+
+@using (Html.SiteInputPanel("create-bugreport-form", "Skapa felanmälan", SiteInputPanels.NONE, SiteInputPanels.CREATE))
+{
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteStringEditor("Rubrik", LABELCOLS, "headline", SiteTextInputs.StringType.TEXT, BugReport.MINLEN_HEADLINE, BugReport.MAXLEN_HEADLINE, SiteTextInputs.GlyphIcon.TITLE)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteMultilineEditor("Beskrivning", LABELCOLS, "description", BugReport.MINLEN_DESCRIPTION, BugReport.MAXLEN_DESCRIPTION, 5)
+        </div>
+    </div>
+}

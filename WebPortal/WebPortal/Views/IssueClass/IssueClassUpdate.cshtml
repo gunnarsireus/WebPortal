@@ -1,0 +1,19 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIIssueClass_CRU
+
+@{
+    int LABELCOLS = 2;
+}
+
+@using (Html.SiteInputPanel("update-issueclass-form", "Uppdatera ärendeklass", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.APPLY))
+{
+    @Html.ValidationSummary(true)
+    @Html.SiteStringHidden("id", SiteTextInputs.NOVALUE)
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteStringEditor("Namn", LABELCOLS, "name", SiteTextInputs.StringType.TEXT, IssueClass.MINLEN_NAME, IssueClass.MAXLEN_NAME, SiteTextInputs.GlyphIcon.TITLE)
+        </div>
+    </div>
+}
+

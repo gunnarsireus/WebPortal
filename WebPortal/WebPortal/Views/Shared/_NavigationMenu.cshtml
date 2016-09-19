@@ -1,0 +1,58 @@
+﻿@using ServerLibrary.Model
+@model string
+
+<ul class="nav navbar-nav">
+    @if (ViewBag.IsAtLeastAdmin)
+    {
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Personal", "Index", "Employee")</li>
+                <li>@Html.ActionLink("Felanmälan", "Index", "BugReport")</li>
+            </ul>
+        </li>
+    }
+    @if (ViewBag.IsAtLeastManagement)
+    {
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ärenden<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Pågående", "Index", "Issue")</li>
+                <li>@Html.ActionLink("Arkiverade", "Index", "XIssueList")</li>
+            </ul>
+        </li>
+    }
+    @if (ViewBag.IsAtLeastCustomer)
+    {
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meddelanden<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                @if (ViewBag.IsAtLeastManagement)
+                {
+                    <li>@Html.ActionLink("Nyheter", "Index", "News")</li>
+                    <li>@Html.ActionLink("Erbjudanden", "Index", "Offer")</li>
+                }
+                else if (ViewBag.IsCustomer)
+                {
+                    <li>@Html.ActionLink("Nyheter", "Index", "NewsCustomer")</li>
+                }
+            </ul>
+        </li>
+    }
+    @if (ViewBag.IsAtLeastManagement)
+    {
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Register<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Kunder", "Index", "Customer")</li>
+                <li>@Html.ActionLink("Boende", "Index", "Resident")</li>
+                <li>@Html.ActionLink("Tidkoder", "Index", "TimeType")</li>
+                <li>@Html.ActionLink("Ärendeklasser", "Index", "IssueClass")</li>
+            </ul>
+        </li>
+    }
+</ul>
+<ul class="nav navbar-nav navbar-right">
+    <li>@Html.ActionLink(Model, "Index",  "Profile")</li>
+    <li>@Html.ActionLink("Logga ut", "Logout", "Home")</li>
+</ul>

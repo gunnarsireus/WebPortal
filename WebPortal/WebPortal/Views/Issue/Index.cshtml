@@ -1,0 +1,19 @@
+﻿@using WebPortal.Helpers
+@using WebPortal.Utils
+
+@{
+    ViewBag.Title = "Renew | Ärenden";
+    Layout        = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/site-issue/js")
+}
+
+<!-- Page layout -->
+
+<div class="container">
+    @Html.Partial("IssuePageAll/IssuePageAll")
+    @Html.Partial("IssuePageOne/IssuePageOne")
+</div>

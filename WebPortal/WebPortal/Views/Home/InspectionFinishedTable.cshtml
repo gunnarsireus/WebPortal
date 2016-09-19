@@ -1,0 +1,21 @@
+﻿@using WebPortal.UIModel
+@model WebPortal.UIModel.UIHomeInspectionList
+
+<table class="table table-striped table-hover">
+    <tbody>
+        @{
+            var count = ViewBag.FinishedInspections.Count;
+        }
+        @for (var i = 0; i < UIHome.NUM_DASHBOARD_ROWS; i++)
+        {
+            var t1 = (count > i) ? ViewBag.FinishedInspections[i].customer : @Html.Raw("&nbsp;");
+            var t2 = (count > i) ? ViewBag.FinishedInspections[i].responsible : @Html.Raw("&nbsp;");
+            var t3 = (count > i) ? @Html.Raw("<a href=\"" + ViewBag.FinishedInspections[i].quicklink + "\"><img src=\"/img/goto.png\" /></a>") : @Html.Raw("&nbsp;");
+            <tr>
+                <td width="47%">@t1</td>
+                <td width="48%">@t2</td>
+                <td width="5%">@t3</td>
+            </tr>
+        }
+    </tbody>
+</table>

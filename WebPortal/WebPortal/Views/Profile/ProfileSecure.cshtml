@@ -1,0 +1,15 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIProfile_S
+
+@{
+    var LABELCOLS = 3;
+}
+
+@using (Html.SiteInputPanel("change-password-form", "Byt lösenord", SiteInputPanels.NONE, SiteInputPanels.APPLY))
+{
+    @Html.ValidationSummary(true)
+    @Html.SiteStringEditor( "Gällande", LABELCOLS, "password",     SiteTextInputs.StringType.PASSWORD,    Account.MINLEN_PASSWORD, Account.MAXLEN_PASSWORD, SiteTextInputs.GlyphIcon.PASSWORD)
+    @Html.SiteStringEditor( "Nytt",     LABELCOLS, "newpassword1", SiteTextInputs.StringType.PW_VALIDATE, Account.MINLEN_PASSWORD, Account.MAXLEN_PASSWORD, SiteTextInputs.GlyphIcon.PASSWORD)
+    @Html.SiteStringEditor( "Bekräfta", LABELCOLS, "newpassword2", SiteTextInputs.StringType.PW_VALIDATE, Account.MINLEN_PASSWORD, Account.MAXLEN_PASSWORD, SiteTextInputs.GlyphIcon.PASSWORD)
+}

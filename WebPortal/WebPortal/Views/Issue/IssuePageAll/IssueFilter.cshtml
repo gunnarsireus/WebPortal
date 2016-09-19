@@ -1,0 +1,75 @@
+﻿@using WebPortal.Helpers
+
+<div class="row" id="filter-issue-panel">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="calendar-view-select" class="btn btn-default">
+                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="schedule-view-select" class="btn btn-default">
+                        <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="list-view-select" class="btn btn-default">
+                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row site-row-spacing">
+            <div class="col-md-12">
+                <h4>Kund</h4>
+            </div>
+        </div>
+        <div class="row site-row-spacing">
+            <div class="col-md-12">
+                @Html.SiteSelect("customer-select", SiteSelectInputs.SelectType.NONEABLE, null, false)
+            </div>
+        </div>
+        <div class="row site-row-spacing">
+            <div class="col-md-12">
+                <h4>Status</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.SiteSelectIssueStatus("status-select", SiteSelectInputs.SelectType.NONEABLE, SiteSelectInputs.IssueStatusSet.ONGOING, false)
+            </div>
+        </div>
+        <div class="row site-row-spacing">
+            <div class="col-md-12">
+                <h4>Prioritet</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.SiteSelectIssuePrio("priority-select", SiteSelectInputs.SelectType.NONEABLE, false)
+            </div>
+        </div>
+        <div class="row site-row-spacing">
+            <div class="col-md-12">
+                <h4>Utrymme</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.SiteSelectIssueAreaType("areatype-select", SiteSelectInputs.SelectType.NONEABLE, false)
+            </div>
+        </div>
+        <div class="row site-row-spacing">
+            <div class="col-md-12">
+                <h4>Nytt ärende</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.SiteButton("create-issue-button", "Skapa", Enums.ButtonPosition.Left, Enums.ButtonStyle.Default, Enums.ButtonSize.Normal)
+            </div>
+        </div>
+    </div>
+</div>

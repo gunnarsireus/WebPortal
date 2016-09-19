@@ -1,0 +1,48 @@
+﻿@using WebPortal.Helpers
+
+@{
+    ViewBag.Title = "Renew | Ärendeklasser";
+    Layout        = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/site-issueclass/js")
+}
+
+<!-- Page layout -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 site-page-control">
+            <h3 class="site-page-header">Ärendeklasser</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Ny ärendeklass</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteButton("create-issueclass-button", "Skapa", Enums.ButtonPosition.Left, Enums.ButtonStyle.Default, Enums.ButtonSize.Normal)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 site-page-content">
+            <div class="row" id="create-issueclass-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("IssueClassCreate")
+                </div>
+            </div>
+            <div class="row" id="update-issueclass-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("IssueClassUpdate")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("IssueClassTable")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

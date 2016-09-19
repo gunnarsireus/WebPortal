@@ -1,0 +1,58 @@
+﻿@using WebPortal.Helpers
+
+@{
+    ViewBag.Title = "Renew | Nyheter";
+    Layout        = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/site-news/js")
+}
+
+<!-- Page layout -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 site-page-control">
+            <h3 class="site-page-header">Nyheter</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Kund</h4>
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    @Html.SiteSelect("customerid-select", SiteSelectInputs.SelectType.NONEABLE, null, false)
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Nyhet</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteButton("create-news-button", "Skapa", Enums.ButtonPosition.Left, Enums.ButtonStyle.Default, Enums.ButtonSize.Normal)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 site-page-content">
+            <div class="row" id="create-news-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("NewsCreate")
+                </div>
+            </div>
+            <div class="row" id="update-news-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("NewsUpdate")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("NewsTable")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

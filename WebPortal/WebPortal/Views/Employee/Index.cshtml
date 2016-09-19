@@ -1,0 +1,73 @@
+﻿@using WebPortal.Helpers
+
+@{
+    ViewBag.Title = "Renew | Personal";
+    Layout        = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/site-employee/js")
+}
+
+<!-- Page layout -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 site-page-control">
+            <h3 class="site-page-header">Personal</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Behörighet</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteSelectAccountAuthzEmployee("authz-select", SiteSelectInputs.SelectType.NONEABLE, false)
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Aktiv</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteSelectYesNo("active-select", false)
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Nytt konto</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteButton("create-employee-button", "Skapa", Enums.ButtonPosition.Left, Enums.ButtonStyle.Default, Enums.ButtonSize.Normal)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 site-page-content">
+            <div class="row" id="create-employee-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("EmployeeCreate")
+                </div>
+            </div>
+            <div class="row" id="update-employee-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("EmployeeUpdate")
+                </div>
+            </div>
+            <div class="row" id="secure-employee-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("EmployeeSecure")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("EmployeeTable")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

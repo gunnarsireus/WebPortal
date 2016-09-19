@@ -1,0 +1,78 @@
+﻿@using WebPortal.Helpers
+
+@{
+    ViewBag.Title = "Renew | Kunder";
+    Layout        = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/site-customer/js")
+}
+
+<!-- Page layout -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 site-page-control">
+            <h3 class="site-page-header">Kunder</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Kundansvarig</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteSelect("managementid-select", SiteSelectInputs.SelectType.NONEABLE, null, false)
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Tekniker</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteSelect("technicianid-select", SiteSelectInputs.SelectType.NONEABLE, null, false)
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Aktiv</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteSelectYesNo("active-select", false)
+                </div>
+            </div>
+            <div class="row site-row-spacing">
+                <div class="col-md-12">
+                    <h4>Ny kund</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteButton("create-customer-button", "Skapa", Enums.ButtonPosition.Left, Enums.ButtonStyle.Default, Enums.ButtonSize.Normal)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 site-page-content">
+            <div class="row" id="create-customer-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("CustomerCreate")
+                </div>
+            </div>
+            <div class="row" id="update-customer-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("CustomerUpdate")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("CustomerTable")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

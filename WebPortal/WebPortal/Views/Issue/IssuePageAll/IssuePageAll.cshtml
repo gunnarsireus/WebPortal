@@ -1,0 +1,14 @@
+﻿@using WebPortal.Utils
+
+<div class="row" id="page-issue-all">
+    <div class="col-md-2 site-page-control">
+        <h3 class="site-page-header">Ärenden @Html.Raw(Images.HELP("page-description-tooltip"))</h3>
+        @Html.Partial("IssuePageAll/IssueFilter")
+    </div>
+    <div class="col-md-10 site-page-content">
+        @Html.Partial("IssuePageAll/IssueCreate")
+        @Html.Partial("IssuePageAll/IssueCalendar/IssueCalendar")
+        @Html.Partial("IssuePageAll/IssueSchedule/IssueSchedule")
+        @Html.Partial("IssuePageAll/IssueList/IssueList")
+    </div>
+</div>

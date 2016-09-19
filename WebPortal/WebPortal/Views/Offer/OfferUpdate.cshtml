@@ -1,0 +1,27 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIOffer_CRU
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputPanel("update-offer-form", "Uppdatera nyhet", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.APPLY))
+{
+    @Html.ValidationSummary(true)
+    @Html.SiteStringHidden("id", SiteTextInputs.NOVALUE)
+    @Html.SiteStringHidden("customerid", SiteTextInputs.NOVALUE)
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteSelectOfferCategory("Kategori",   LABELCOLS, "category", SiteSelectInputs.SelectType.MANDATORY)
+            @Html.SiteStringEditor(       "Rubrik",     LABELCOLS, "headline", SiteTextInputs.StringType.TEXT, Offer.MINLEN_HEADLINE, Offer.MAXLEN_HEADLINE, SiteTextInputs.GlyphIcon.TITLE)
+            @Html.SiteDateTimeInput(      "Visas",      LABELCOLS, "showfromdate",  "showfromtime",  SiteDateTimeInputs.CalendarType.FREE)
+            @Html.SiteDateTimeInput(      "Släcks",     LABELCOLS, "showuntildate", "showuntiltime", SiteDateTimeInputs.CalendarType.FUTURE)
+            @Html.SiteStringDisplay(      "Från",       LABELCOLS, "author",   SiteTextInputs.StringType.TEXT, SiteTextInputs.GlyphIcon.USER)
+            @Html.SiteStringDisplay(      "Skickat",    LABELCOLS, "sent",     SiteTextInputs.StringType.TEXT, SiteTextInputs.GlyphIcon.CALENDAR)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteMultilineEditor(    "Meddelande", LABELCOLS, "message", Offer.MINLEN_MESSAGE, Offer.MAXLEN_MESSAGE, 13)
+        </div>
+    </div>
+}

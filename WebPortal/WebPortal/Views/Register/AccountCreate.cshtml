@@ -1,0 +1,38 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIAccount_C
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputForm("create-account-form", SiteInputPanels.NONE, SiteInputPanels.NONE))
+{
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteStringEditor("E-post",     LABELCOLS, "email",      SiteTextInputs.StringType.TEXT,  Account.MINLEN_EMAIL,     Account.MAXLEN_EMAIL,     SiteTextInputs.GlyphIcon.EMAIL)
+            @Html.SiteStringEditor("Förnamn",    LABELCOLS, "firstname",  SiteTextInputs.StringType.TEXT,  Account.MINLEN_FIRSTNAME, Account.MAXLEN_FIRSTNAME, SiteTextInputs.GlyphIcon.USER)
+            @Html.SiteStringEditor("Efternamn",  LABELCOLS, "lastname",   SiteTextInputs.StringType.TEXT,  Account.MINLEN_LASTNAME,  Account.MAXLEN_LASTNAME,  SiteTextInputs.GlyphIcon.USER)
+            @Html.SiteStringEditor("Telefonnr.", LABELCOLS, "phone",      SiteTextInputs.StringType.PHONE, Account.MINLEN_PHONE,     Account.MAXLEN_PHONE,     SiteTextInputs.GlyphIcon.PHONE)
+            @Html.SiteStringEditor("Adress",     LABELCOLS, "address",    SiteTextInputs.StringType.TEXT,  Account.MINLEN_ADDRESS,   Account.MAXLEN_ADDRESS,   SiteTextInputs.GlyphIcon.LOCATION)
+            @Html.SiteStringEditor("Våning",     LABELCOLS, "floor",      SiteTextInputs.StringType.TEXT,  Account.MINLEN_FLOOR,     Account.MAXLEN_FLOOR,     SiteTextInputs.GlyphIcon.FLOOR)
+            @Html.SiteStringEditor("Lägenhet",   LABELCOLS, "apartment",  SiteTextInputs.StringType.TEXT,  Account.MINLEN_APARTMENT, Account.MAXLEN_APARTMENT, SiteTextInputs.GlyphIcon.APARTMENT)
+            @Html.SiteSelect2(     "Förening",   LABELCOLS, "customerid", null)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteLink("go-back-link", "Tillbaka", "site-half-row-spacing", Enums.LinkPosition.Left)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteButton("register-button", "Registrera", Enums.ButtonPosition.Right, Enums.ButtonStyle.Info, Enums.ButtonSize.Normal)
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteErrorField("custom-message", Enums.MessageFieldStyle.Warning)
+        </div>
+    </div>
+}

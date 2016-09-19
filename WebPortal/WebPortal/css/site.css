@@ -1,0 +1,180 @@
+﻿/* Margins */
+
+.site-pagemargin-top {
+    margin-top: 70px;
+}
+
+.site-itemmargin-top {
+    margin-top: 20px;
+}
+
+.site-tabmenumargin-bottom {
+    margin-bottom: 30px;
+}
+
+.site-half-row-spacing {
+    margin-top: 7px;
+}
+
+.site-row-spacing {
+    margin-top: 10px;
+}
+
+.site-buttonmargin-left {
+    margin-left: 10px;
+}
+
+.site-buttonmargin-right {
+    margin-right: 10px;
+}
+
+.site-page-control {
+    margin-bottom: 40px;
+}
+
+.site-page-header {
+    margin-bottom: 40px;
+}
+
+.site-page-content {
+    margin-top: 20px;
+    padding-right: 20px;
+    border-left: 1px solid #CCCCCC;
+}
+
+@media (max-width: 992px) {
+    .site-page-content {
+    margin-top: 20px;
+    padding-right: 0px;
+    border-left: 0px;
+  }
+}
+
+/* Padding */
+
+.site-no-horizontal-padding {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.site-no-vertical-padding {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.site-no-padding {
+    padding: 0px;
+}
+
+/* Links */
+
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Tables */
+
+table.compact tr td {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+/* Clickable items that need cursor */
+
+.site-clickable {
+    cursor: pointer;
+}
+
+/* Borders */
+
+.site-form-border {
+    outline: 1px solid #BCBDC0;
+}
+
+/* jquery.uiblock.js */
+
+#progress-indicator {
+    position: fixed;
+    top: 175px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+/* Prevent select-boxes flickering (#39) */
+/* http://stackoverflow.com/questions/23251488/bootstrap-select-plugin-how-to-avoid-flickering */
+
+select {
+    visibility: hidden;
+    display: none;
+}
+
+/* Info window in google maps */
+
+.container-position-info-window-wrapper p {
+    margin: 5px;
+}
+
+.container-position-info-window {
+   padding: 5px;
+}
+
+.container-position-info-window h3 {
+    padding-bottom: 10px;
+}
+
+.container-position-info-window-wrapper h4 span {
+    padding-left: 10px;
+}
+
+.container-position-info-window-wrapper h4 {
+    margin-bottom: 5px;
+}
+
+.container-position-info-window-wrapper h4 img {
+    padding-bottom: 3px;
+}
+
+/* JEditable */
+
+.site-jeditable-style {
+    outline: 0;
+    border: 1px solid #060606;
+    padding-left: 2px;
+    visibility: visible;
+    display: inline;
+    color: #060606;
+}
+
+tbody .site-jeditable-target {
+    color: #25AAE1;
+    cursor: pointer;
+}
+
+/* Menu display */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+}

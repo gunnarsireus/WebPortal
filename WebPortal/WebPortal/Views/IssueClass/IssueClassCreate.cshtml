@@ -1,0 +1,17 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIIssueClass_CRU
+
+@{
+    int LABELCOLS = 2;
+}
+
+@using (Html.SiteInputPanel("create-issueclass-form", "Skapa ärendeklass", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.CREATE))
+{
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteStringEditor("Namn", LABELCOLS, "name", SiteTextInputs.StringType.TEXT, TimeType.MINLEN_NAME, TimeType.MAXLEN_NAME, SiteTextInputs.GlyphIcon.TITLE)
+        </div>
+    </div>
+}

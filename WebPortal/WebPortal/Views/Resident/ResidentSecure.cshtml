@@ -1,0 +1,21 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIResident_S
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputPanel("change-password-form", "Byt lösenord", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.APPLY))
+{
+    @Html.ValidationSummary(true)
+    @Html.SiteStringHidden("id", SiteTextInputs.NOVALUE)
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteStringDisplay("E-post", LABELCOLS, "email", SiteTextInputs.StringType.TEXT, SiteTextInputs.GlyphIcon.EMAIL)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteStringEditor("Lösenord", LABELCOLS, "password", SiteTextInputs.StringType.PW_VALIDATE, Account.MINLEN_PASSWORD, Account.MAXLEN_PASSWORD, SiteTextInputs.GlyphIcon.PASSWORD)
+        </div>
+    </div>
+}

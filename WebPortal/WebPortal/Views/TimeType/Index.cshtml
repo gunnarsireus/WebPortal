@@ -1,0 +1,43 @@
+﻿@using WebPortal.Helpers
+
+@{
+    ViewBag.Title = "Renew | Tidkoder";
+    Layout        = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/site-timetype/js")
+}
+
+<!-- Page layout -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 site-page-control">
+            <h3 class="site-page-header">Tidkoder</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Visma</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.SiteButton("sync-timetype-button", "Synka", Enums.ButtonPosition.Left, Enums.ButtonStyle.Default, Enums.ButtonSize.Normal)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 site-page-content">
+            <div class="row" id="update-timetype-panel" hidden>
+                <div class="col-md-12">
+                    @Html.Partial("TimeTypeUpdate")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("TimeTypeTable")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

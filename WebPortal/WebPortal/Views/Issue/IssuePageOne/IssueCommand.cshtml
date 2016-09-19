@@ -1,0 +1,52 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@using WebPortal.Utils
+
+<div class="row" id="command-issue-panel">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Status</h4>
+                @foreach (int currstatus in Issue.GetStatusCollection())
+                {
+                    string id  = "command-issue-panel-curr-status-" + currstatus;
+                    string img = Images.StatusAsImagePath(currstatus);
+                    string txt = Issue.StatusAsString(currstatus);
+                    
+                    <span id="@id" hidden>
+                        <img src="@img" /> @txt
+                    </span>
+                }
+            </div>
+        </div>
+        <div class="row site-row-spacing">
+            <div class="col-md-12">
+                <h4>Åtgärder</h4>
+            </div>
+        </div>
+        @foreach (int currstatus in Issue.GetStatusCollection())
+        {
+            string id = "command-issue-panel-next-status-for-" + currstatus;
+            
+            <div class="row" id="@id" hidden>
+                <div class="col-md-12">
+                    @foreach (int nextstatus in Issue.NextPossibleStatuses(currstatus))
+                    {
+                        string img = Images.StatusAsNextImagePath(nextstatus);
+                        string nxt = nextstatus.ToString();
+                        string txt = Issue.StatusAsString(nextstatus);
+                        
+                        <p>
+                        <img class="command-issue-panel-nextstatus site-clickable" data-tostatus="@nxt" data-tostatusname="@txt" src="@img" /> Till @txt
+                        </p>
+                    }
+                </div>
+            </div>
+        }
+        <div class="row site-pagemargin-top">
+            <div class="col-md-12">
+                @Html.Raw(Images.RETURN("command-issue-panel-exit")) Tillbaka
+            </div>
+        </div>
+    </div>
+</div>

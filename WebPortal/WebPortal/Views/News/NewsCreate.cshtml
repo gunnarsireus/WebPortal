@@ -1,0 +1,25 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UINews_CRU
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputPanel("create-news-form", "Skapa nyhet", SiteInputPanels.NONE, SiteInputPanels.CLOSE | SiteInputPanels.CREATE))
+{
+    @Html.ValidationSummary(true)
+    
+    @Html.SiteStringHidden("customerid", SiteTextInputs.NOVALUE)
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteSelectNewsCategory("Kategori",   LABELCOLS, "category", SiteSelectInputs.SelectType.MANDATORY)
+            @Html.SiteStringEditor(      "Rubrik",     LABELCOLS, "headline", SiteTextInputs.StringType.TEXT, News.MINLEN_HEADLINE, News.MAXLEN_HEADLINE, SiteTextInputs.GlyphIcon.TITLE)
+            @Html.SiteDateTimeInput(     "Visas",      LABELCOLS, "showfromdate",  "showfromtime",  SiteDateTimeInputs.CalendarType.FUTURE)
+            @Html.SiteDateTimeInput(     "Släcks",     LABELCOLS, "showuntildate", "showuntiltime", SiteDateTimeInputs.CalendarType.FUTURE)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteMultilineEditor(   "Meddelande", LABELCOLS, "message", News.MINLEN_MESSAGE, News.MAXLEN_MESSAGE, 8)
+        </div>
+    </div>
+}

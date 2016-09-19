@@ -1,0 +1,37 @@
+﻿@using ServerLibrary.Model
+@using WebPortal.Helpers
+@model WebPortal.UIModel.UIAccount_V
+
+@{
+    int LABELCOLS = 3;
+}
+
+@using (Html.SiteInputForm("validate-account-form", SiteInputPanels.NONE, SiteInputPanels.NONE))
+{
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteStringEditor("Användare", LABELCOLS, "email",    SiteTextInputs.StringType.TEXT,     Account.MINLEN_EMAIL,    Account.MAXLEN_EMAIL,    SiteTextInputs.GlyphIcon.USER)
+            @Html.SiteStringEditor("Lösenord",  LABELCOLS, "password", SiteTextInputs.StringType.PASSWORD, Account.MINLEN_PASSWORD, Account.MAXLEN_PASSWORD, SiteTextInputs.GlyphIcon.PASSWORD)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.SiteButton("register-button", "Registrera", Enums.ButtonPosition.Left, Enums.ButtonStyle.Success, Enums.ButtonSize.Normal)
+        </div>
+        <div class="col-md-6">
+            @Html.SiteButton("validate-button", "Logga in", Enums.ButtonPosition.Right, Enums.ButtonStyle.Info, Enums.ButtonSize.Normal)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteLink("forgot-password-link", "Glömt lösenord?", "site-row-spacing", Enums.LinkPosition.Right)
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            @Html.SiteErrorField("custom-message", Enums.MessageFieldStyle.Warning)
+        </div>
+    </div>
+}
